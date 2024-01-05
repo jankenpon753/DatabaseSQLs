@@ -10,7 +10,7 @@
       "port": 3306,
       "driver": "MySQL",
       "name": "Housing",
-      "database": "sys",
+      "database": "HousingSociety",
       "username": "root",
       "password": "asd@#$F%2w"
     }

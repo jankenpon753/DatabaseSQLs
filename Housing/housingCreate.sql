@@ -11,6 +11,19 @@ CREATE TABLE OwnerInfo (
     address VARCHAR(255)
 );
 
+CREATE TABLE StaffInfo(
+    staffId INT AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(30),
+    lastName VARCHAR(30),
+    age INT,
+    personalIdentification VARCHAR(9),
+    phone VARCHAR(11),
+    email VARCHAR(100),
+    buildingId INT,
+    jobTitle VARCHAR(100),
+    salary INT
+);
+
 CREATE TABLE BuildingInfo (
     buildingId INT AUTO_INCREMENT PRIMARY KEY,
     floors INT,
@@ -21,6 +34,11 @@ CREATE TABLE BuildingInfo (
     FOREIGN KEY (ownerId) REFERENCES OwnerInfo(ownerId),
     FOREIGN KEY (managerId) REFERENCES StaffInfo(staffId)
 );
+
+ALTER TABLE
+    StaffInfo
+ADD
+    FOREIGN KEY (buildingId) REFERENCES BuildingInfo(buildingId);
 
 CREATE TABLE FlatInfo (
     flatId INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,22 +57,7 @@ CREATE TABLE TenantInfo (
     phone VARCHAR(11),
     email VARCHAR(100),
     flatId INT,
-    isPrimary ENUM('Yes', 'No'),
     FOREIGN KEY (flatId) REFERENCES FlatInfo(flatId)
-);
-
-CREATE TABLE StaffInfo(
-    staffId INT AUTO_INCREMENT PRIMARY KEY,
-    firstName VARCHAR(30),
-    lastName VARCHAR(30),
-    age INT,
-    personalIdentification VARCHAR(9),
-    phone VARCHAR(11),
-    email VARCHAR(100),
-    buildingId INT,
-    jobTitle VARCHAR(100),
-    salary INT,
-    FOREIGN KEY (buildingId) REFERENCES BuildingInfo(buildingId)
 );
 
 CREATE TABLE RentInfo(
