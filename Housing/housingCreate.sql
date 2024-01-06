@@ -59,10 +59,3 @@ CREATE TABLE TenantInfo (
     flatId INT,
     FOREIGN KEY (flatId) REFERENCES FlatInfo(flatId)
 );
-
-CREATE TABLE RentInfo(
-    flatId INT,
-    rent INT,
-    due VARCHAR(20),
-    FOREIGN KEY (flatId) REFERENCES FlatInfo(flatId)
-);
