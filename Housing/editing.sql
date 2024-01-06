@@ -10,11 +10,33 @@ DROP DATABASE IF EXISTS HousingSociety;
 DROP TABLE OwnerInfo;
 
 SELECT
-    count(staffId)
+    sum(flats),
+    buildingId,
+    floors
 FROM
-    StaffInfo
-WHERE
-    jobTitle = 'Manager';
+    BuildingInfo
+GROUP BY
+    buildingId;
 
 SET
     FOREIGN_KEY_CHECKS = 0;
+
+DELETE FROM
+    StaffInfo
+WHERE
+    buildingId > 210010;
+
+DELETE FROM
+    BuildingInfo
+WHERE
+    buildingId > 210010;
+
+UPDATE
+    BuildingInfo
+SET
+    flats = 32
+WHERE
+    buildingId = 210007;
+
+DELETE FROM
+    FlatInfo;
